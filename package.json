@@ -1,0 +1,23 @@
+{
+  "name": "revsprint-studio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "RevSprint Studio turns scattered commercial notes into a polished six-week GTM sprint in a local-first static web app.",
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/serve.mjs app 3000",
+    "start": "node scripts/serve.mjs docs 4173",
+    "test": "node --test",
+    "build": "node scripts/build.mjs",
+    "verify": "npm run test && npm run build && node scripts/verify.mjs"
+  },
+  "keywords": [
+    "hackathon",
+    "sales",
+    "marketing",
+    "business-development",
+    "static-site",
+    "local-first"
+  ],
+  "license": "MIT"
+}

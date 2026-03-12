@@ -1,0 +1,11 @@
+node_modules
+docs
+*.log
+
+# Internal workflow files
+AGENTS.md
+OPENCLAW_*
+hackathon.json
+research/
+devpost/
+artifacts/
