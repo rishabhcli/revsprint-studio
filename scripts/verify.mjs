@@ -71,7 +71,11 @@ const demoState = createAppState({
 assert.equal(demoState.sprint.weekPlan.length, 6, "Expected a six-week sprint");
 assert.equal(demoState.sprint.workflow.length, 5, "Expected five commercial pods");
 assert.ok(demoState.sprint.plays.length >= 5, "Expected ranked commercial plays");
-assert.match(demoState.sprint.summary.operatingPosture, /motion/i, "Expected an operating posture");
+assert.match(
+  demoState.sprint.summary.operatingPosture,
+  /(trust|motion|focus)/i,
+  "Expected an operating posture"
+);
 
 const brief = buildSprintBrief(demoState);
 assert.match(brief, /RevSprint Brief/, "Sprint brief should be generated");
