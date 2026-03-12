@@ -9,7 +9,9 @@
     "start": "node scripts/serve.mjs docs 4173",
     "test": "node --test",
     "build": "node scripts/build.mjs",
-    "verify": "npm run test && npm run build && node scripts/verify.mjs"
+    "verify": "npm run test && npm run build && node scripts/verify.mjs",
+    "video:build": "node scripts/build-demo-video.mjs",
+    "video:preview": "remotion studio remotion/index.ts"
   },
   "keywords": [
     "hackathon",
@@ -19,5 +21,11 @@
     "static-site",
     "local-first"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@remotion/cli": "^4.0.434",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "remotion": "^4.0.434"
+  }
 }

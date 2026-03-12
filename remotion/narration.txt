@@ -1,0 +1,27 @@
+RevSprint Studio is a local-first commercial planning workspace built for early teams that need clarity faster than they need another dashboard.
+In this walkthrough, I will show how messy founder notes become a live go-to-market sprint, ranked plays, and an exportable commercial brief.
+
+Most early teams already have the signal they need.
+What they do not have is one place where customer notes, objections, positioning gaps, and channel ideas turn into a believable operating plan.
+That makes it easy for every week to feel reactive.
+
+RevSprint Studio starts from that raw commercial input.
+It turns scattered signals into structured opportunities, then scores them for impact, confidence, and effort so the team can see what deserves attention first.
+
+From there, the workspace maps a six-week sprint.
+The roadmap makes each week legible instead of chaotic.
+It shows which plays should be tested, what message angles support them, and how the work should move from one owner to the next.
+
+The execution board keeps that plan live as the sprint evolves.
+Teams can move channel plays, review the active bets, and keep the commercial pressure visible without losing the structure of the plan.
+
+RevSprint Studio also exports a concise commercial brief.
+That brief is useful because the planning work does not stay trapped in the interface.
+It can be shared in a founder review, an advisor sync, or the next operating meeting.
+
+Under the hood, the architecture stays intentionally practical.
+The app runs fully in the browser, keeps its state locally, supports an offline shell, and deploys as static files.
+There is no backend dependency and no hidden demo setup.
+
+That makes RevSprint Studio a strong fit for Dev Season of Code.
+It is a focused product for sales and business development workflows, and it shows a clear before-and-after outcome in a format that is easy to review quickly.
