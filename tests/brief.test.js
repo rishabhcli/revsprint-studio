@@ -18,5 +18,6 @@ test("buildSprintBrief exports the company snapshot and ranked plays", () => {
   assert.match(brief, /Partner pilot sprint/);
   assert.match(brief, /Founder-led outbound sequence/);
   assert.match(brief, /Monthly revenue goal: \$25,000/);
+  assert.match(brief, /Operating posture:/);
   assert.match(brief, /Six-Week Sprint/);
 });

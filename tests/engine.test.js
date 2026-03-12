@@ -24,5 +24,7 @@ test("generateSprintPlan includes messaging angles and checkpoints", () => {
   assert.equal(sprint.messagingAngles.length, 4);
   assert.match(sprint.weekPlan[0].checkpoint, /primary sprint bet/i);
   assert.match(sprint.summary.pipeline, /partner pilot sprint/i);
+  assert.match(sprint.summary.operatingPosture, /higher-trust opportunities/i);
+  assert.match(sprint.summary.budgetPosture, /supports one primary play/i);
   assert.ok(sprint.summary.readinessScore >= 80);
 });

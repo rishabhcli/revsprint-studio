@@ -16,6 +16,7 @@ async function mustExist(relativePath) {
 
 const requiredFiles = [
   "app/index.html",
+  "app/404.html",
   "app/styles.css",
   "app/src/main.js",
   "app/src/engine.js",
@@ -25,6 +26,7 @@ const requiredFiles = [
   "tests/brief.test.js",
   "README.md",
   "docs/index.html",
+  "docs/404.html",
   "docs/styles.css",
   "docs/manifest.json",
   "docs/src/main.js",
@@ -69,6 +71,7 @@ const demoState = createAppState({
 assert.equal(demoState.sprint.weekPlan.length, 6, "Expected a six-week sprint");
 assert.equal(demoState.sprint.workflow.length, 5, "Expected five commercial pods");
 assert.ok(demoState.sprint.plays.length >= 5, "Expected ranked commercial plays");
+assert.match(demoState.sprint.summary.operatingPosture, /motion/i, "Expected an operating posture");
 
 const brief = buildSprintBrief(demoState);
 assert.match(brief, /RevSprint Brief/, "Sprint brief should be generated");
