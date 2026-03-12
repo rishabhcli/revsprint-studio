@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#14334a">
+    <meta
+      name="description"
+      content="RevSprint Studio is a local-first commercial planning workspace that turns scattered customer signals into a six-week GTM sprint."
+    >
+    <link rel="manifest" href="./manifest.json">
+    <link rel="icon" href="./icon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="./styles.css">
+    <title>RevSprint Studio</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#mainContent">Skip to workspace</a>
+    <div class="page-orb orb-a"></div>
+    <div class="page-orb orb-b"></div>
+    <main class="app-shell" id="mainContent">
+      <header class="topbar">
+        <div class="brand-lockup">
+          <div class="brand-mark" aria-hidden="true">RS</div>
+          <div>
+            <p class="eyebrow">Local-first GTM planning workspace</p>
+            <h1>RevSprint Studio</h1>
+          </div>
+        </div>
+        <div class="topbar-badges" aria-label="Product highlights">
+          <span>Static web app</span>
+          <span>Six-week sprint</span>
+          <span>Channel plays</span>
+          <span>Brief export</span>
+        </div>
+      </header>
+
+      <section class="hero panel">
+        <div class="hero-copy">
+          <p class="eyebrow">Commercial planning without backend drag</p>
+          <h2>Turn scattered market notes, buyer friction, and channel ideas into a clear six-week revenue sprint.</h2>
+          <p class="hero-text">
+            RevSprint Studio helps a lean commercial team decide what to do next: where to focus,
+            which plays to run first, how to message the offer, and what weekly checkpoint matters most.
+          </p>
+          <div class="hero-actions">
+            <button class="primary-button" id="generateButton" type="button">Generate sprint</button>
+            <button class="secondary-button" id="demoButton" type="button">Load demo company</button>
+            <button class="ghost-button" id="resetButton" type="button">Start blank</button>
+          </div>
+          <div class="hero-stats" id="heroStats" aria-label="Sprint metrics"></div>
+        </div>
+
+        <aside class="hero-rail">
+          <article class="signal-card">
+            <p class="kicker">Operating readout</p>
+            <strong id="heroHeadline"></strong>
+            <p id="heroSubline"></p>
+            <div class="agent-strip" id="heroPodStrip" aria-label="Commercial pods"></div>
+          </article>
+          <article class="signal-card">
+            <p class="kicker">Current profile tags</p>
+            <div class="profile-chip-grid" id="profileChips" aria-label="Commercial profile tags"></div>
+          </article>
+        </aside>
+      </section>
+
+      <section class="workspace-grid">
+        <section class="panel form-panel">
+          <div class="section-heading">
+            <div>
+              <p class="kicker">Company intake</p>
+              <h2>Commercial brief</h2>
+            </div>
+            <p class="helper-text">Adjust the inputs, then regenerate the sprint.</p>
+          </div>
+
+          <div class="form-grid">
+            <label class="field">
+              <span>Company name</span>
+              <input id="companyName" type="text" maxlength="60" placeholder="Northstar Ledger">
+            </label>
+            <label class="field">
+              <span>Product name</span>
+              <input id="productName" type="text" maxlength="60" placeholder="RevSprint Studio">
+            </label>
+            <label class="field">
+              <span>Business stage</span>
+              <select id="businessStage">
+                <option>Idea</option>
+                <option>Beta</option>
+                <option>Early revenue</option>
+                <option>Growth</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>Business model</span>
+              <select id="businessModel">
+                <option>B2B SaaS</option>
+                <option>Services</option>
+                <option>Marketplace</option>
+                <option>Fintech</option>
+                <option>Education tech</option>
+              </select>
+            </label>
+            <label class="field field-wide">
+              <span>Target buyer</span>
+              <input id="targetBuyer" type="text" maxlength="120" placeholder="Revenue operations leads at seed to Series A SaaS teams">
+            </label>
+            <label class="field">
+              <span>Primary region</span>
+              <input id="primaryRegion" type="text" maxlength="60" placeholder="North America">
+            </label>
+            <label class="field">
+              <span>Sales motion</span>
+              <select id="salesMotion">
+                <option>Founder-led outbound</option>
+                <option>Product-led growth</option>
+                <option>Partnership-led</option>
+                <option>Consultative selling</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>Monthly revenue goal</span>
+              <input id="monthlyRevenueGoal" type="number" min="1000" max="250000" step="500" placeholder="25000">
+            </label>
+            <label class="field">
+              <span>Monthly GTM budget</span>
+              <input id="monthlyBudget" type="number" min="500" max="100000" step="500" placeholder="8000">
+            </label>
+            <label class="field">
+              <span>Commercial team size</span>
+              <input id="teamSize" type="number" min="1" max="50" step="1" placeholder="4">
+            </label>
+            <label class="field toggle-field">
+              <span>Partner motion matters</span>
+              <input id="needsPartners" type="checkbox">
+            </label>
+            <label class="field toggle-field">
+              <span>Enterprise pipeline focus</span>
+              <input id="enterpriseFocus" type="checkbox">
+            </label>
+            <label class="field field-wide">
+              <span>Current channels</span>
+              <input id="currentChannels" type="text" maxlength="180" placeholder="Founder outbound, LinkedIn content, referrals">
+            </label>
+            <label class="field field-wide">
+              <span>Current commercial signals</span>
+              <textarea
+                id="currentSignals"
+                rows="4"
+                placeholder="Pilot conversations are warm, demos convert well when the founder is involved, but follow-up is inconsistent and no partner story is packaged."
+              ></textarea>
+            </label>
+            <label class="field field-wide">
+              <span>Core customer pain</span>
+              <textarea
+                id="customerPain"
+                rows="4"
+                placeholder="Teams lose revenue because the handoff from marketing to pipeline review is slow and scattered across tools."
+              ></textarea>
+            </label>
+            <label class="field field-wide">
+              <span>Differentiators</span>
+              <textarea
+                id="differentiators"
+                rows="4"
+                placeholder="Fast setup, cleaner operating rhythm, visible weekly plan, and lightweight reporting for advisors."
+              ></textarea>
+            </label>
+            <label class="field field-wide">
+              <span>Operating constraints</span>
+              <textarea
+                id="operatingConstraints"
+                rows="4"
+                placeholder="Small team, limited paid budget, founder still handles demos, and customer proof is not yet packaged."
+              ></textarea>
+            </label>
+          </div>
+
+          <div class="form-footer">
+            <p class="helper-text" id="statusLine"></p>
+          </div>
+        </section>
+
+        <aside class="panel summary-panel">
+          <div class="section-heading">
+            <div>
+              <p class="kicker">Operating output</p>
+              <h2>Commercial brief</h2>
+            </div>
+          </div>
+          <div class="summary-card-grid" id="summaryCards"></div>
+          <div class="brief-panel">
+            <div class="brief-header">
+              <div>
+                <p class="kicker">Exportable</p>
+                <h3>Sprint brief</h3>
+              </div>
+              <div class="brief-actions">
+                <button class="ghost-button" id="copyBriefButton" type="button">Copy</button>
+                <button class="secondary-button" id="downloadBriefButton" type="button">Download</button>
+              </div>
+            </div>
+            <textarea id="briefPreview" rows="20" readonly aria-label="Commercial brief preview"></textarea>
+          </div>
+        </aside>
+      </section>
+
+      <section class="results-grid">
+        <section class="panel">
+          <div class="section-heading">
+            <div>
+              <p class="kicker">Roadmap</p>
+              <h2>Six-week GTM sprint</h2>
+            </div>
+            <p class="helper-text">Each week has a lead pod, a focus, and concrete checkpoints.</p>
+          </div>
+          <div class="month-grid" id="weekPlan" aria-label="Six-week sprint"></div>
+        </section>
+
+        <aside class="panel milestone-panel">
+          <div class="section-heading">
+            <div>
+              <p class="kicker">Milestones</p>
+              <h2>Upcoming checkpoints</h2>
+            </div>
+          </div>
+          <div class="milestone-list" id="milestoneList" aria-label="Sprint checkpoints"></div>
+        </aside>
+      </section>
+
+      <section class="panel">
+        <div class="section-heading">
+          <div>
+            <p class="kicker">Channel plays</p>
+            <h2>Ranked commercial bets</h2>
+          </div>
+          <p class="helper-text">These plays are ranked against stage, motion, budget, and the current signals in the brief.</p>
+        </div>
+        <div class="scholarship-grid" id="playGrid" aria-label="Ranked commercial plays"></div>
+      </section>
+
+      <section class="dual-grid">
+        <section class="panel">
+          <div class="section-heading">
+            <div>
+              <p class="kicker">Messaging</p>
+              <h2>Offer angles to test</h2>
+            </div>
+          </div>
+          <div class="essay-grid" id="angleGrid" aria-label="Messaging angles"></div>
+        </section>
+
+        <section class="panel">
+          <div class="section-heading">
+            <div>
+              <p class="kicker">Workflow</p>
+              <h2>Commercial pod handoffs</h2>
+            </div>
+          </div>
+          <div class="workflow-grid" id="workflowGrid" aria-label="Commercial workflow"></div>
+        </section>
+      </section>
+    </main>
+
+    <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>
