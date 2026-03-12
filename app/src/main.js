@@ -157,13 +157,13 @@ function renderSummaryCards() {
       accent: "north-star",
     },
     {
-      title: "Pipeline signal",
-      value: state.sprint.summary.pipeline,
+      title: "Operating posture",
+      value: state.sprint.summary.operatingPosture,
       accent: "funding",
     },
     {
-      title: "Message signal",
-      value: state.sprint.summary.messageSignal,
+      title: "Pipeline signal",
+      value: `${state.sprint.summary.pipeline} ${state.sprint.summary.budgetPosture}`,
       accent: "essay",
     },
     {

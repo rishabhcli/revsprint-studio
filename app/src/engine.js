@@ -276,6 +276,29 @@ function buildStageHeadline(profile) {
   return "You have enough traction to turn scattered signals into a disciplined commercial sprint.";
 }
 
+function getOperatingPosture(profile) {
+  if (profile.teamSize <= 2) {
+    return "Keep the motion narrow and manually intensive until one channel proves it can repeat.";
+  }
+  if (profile.enterpriseFocus) {
+    return "Bias the sprint toward fewer, higher-trust opportunities with stronger proof and tighter follow-through.";
+  }
+  if (profile.salesMotion === "Product-led growth") {
+    return "Use the sprint to tighten onboarding and activation before widening acquisition spend.";
+  }
+  return "Run one lead play aggressively, support it with one secondary path, and protect team focus.";
+}
+
+function getBudgetPosture(profile) {
+  if (profile.monthlyBudget < 3000) {
+    return "Budget is tight. Prioritize proof packaging, outbound precision, and referral leverage over paid reach.";
+  }
+  if (profile.monthlyBudget < 9000) {
+    return "Budget supports one primary play and one supporting path, but every experiment still needs a clear kill rule.";
+  }
+  return "Budget is healthy enough to support proof packaging plus a second acquisition path without overloading the team.";
+}
+
 export function createDraftBrief(overrides = {}) {
   return {
     ...DEFAULT_DRAFT_BRIEF,
@@ -554,6 +577,8 @@ export function generateSprintPlan(draftBrief, options = {}) {
       headline: buildStageHeadline(profile),
       subline: `Lead with ${plays[0].title.toLowerCase()} for ${topBuyer}, then use the sprint to tighten proof and follow-through.`,
       northStar: `Reach ${formatMoney(profile.monthlyRevenueGoal)} in monthly revenue with a motion the ${profile.teamSize}-person team can actually sustain.`,
+      operatingPosture: getOperatingPosture(profile),
+      budgetPosture: getBudgetPosture(profile),
       pipeline: `${plays[0].title} is the lead bet, with ${plays[1].title.toLowerCase()} as the supporting motion.`,
       messageSignal: `Package ${profile.productName} as the faster path from signal to next step for ${topBuyer}.`,
       risk: profile.operatingConstraints,

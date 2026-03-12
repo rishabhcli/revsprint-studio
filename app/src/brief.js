@@ -25,6 +25,8 @@ export function buildSprintBrief(state) {
     "## Operating Readout",
     `- Headline: ${sprint.summary.headline}`,
     `- North star: ${sprint.summary.northStar}`,
+    `- Operating posture: ${sprint.summary.operatingPosture}`,
+    `- Budget posture: ${sprint.summary.budgetPosture}`,
     `- Primary pipeline signal: ${sprint.summary.pipeline}`,
     `- Message signal: ${sprint.summary.messageSignal}`,
     `- Risk watch: ${sprint.summary.risk}`,
