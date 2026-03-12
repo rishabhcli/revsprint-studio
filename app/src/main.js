@@ -362,7 +362,10 @@ const textFields = [
 ];
 
 for (const field of textFields) {
-  elements[field].addEventListener("input", (event) => {
+  const eventName =
+    elements[field].tagName === "SELECT" ? "change" : "input";
+
+  elements[field].addEventListener(eventName, (event) => {
     handleFieldChange(field, event.target.value);
   });
 }
@@ -380,6 +383,16 @@ elements.generateButton.addEventListener("click", () => {
   persist();
   render(true);
   showToast("Sprint regenerated");
+});
+
+document.addEventListener("keydown", (event) => {
+  if ((event.metaKey || event.ctrlKey) && event.key === "Enter") {
+    event.preventDefault();
+    state = regenerateSprint(state);
+    persist();
+    render(true);
+    showToast("Sprint regenerated");
+  }
 });
 
 elements.demoButton.addEventListener("click", () => {
