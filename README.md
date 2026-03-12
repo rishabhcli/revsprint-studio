@@ -8,7 +8,7 @@ Built for Dev Season of Code 2026, the product stays intentionally lightweight: 
 
 - Fits categories around sales, business development, and commercial decision systems.
 - Demonstrates clear usefulness with a concrete before-and-after workflow instead of a generic dashboard.
-- Ships as a static product that judges can inspect quickly in a public repository.
+- Ships as a static product that is easy to inspect, verify, and deploy from a public repository.
 
 ## Product Shape
 
@@ -57,6 +57,21 @@ npm run start
 ```
 
 Open `http://127.0.0.1:4173`.
+
+## Build the Demo Video
+
+RevSprint Studio includes a Remotion-based walkthrough renderer with optional ElevenLabs narration.
+
+```bash
+ELEVENLABS_API_KEY=... ELEVENLABS_VOICE_ID=... npm run video:build
+```
+
+This creates:
+
+- `artifacts/demo/revsprint-studio-demo.mp4`
+- `docs/demo/revsprint-studio-demo.mp4`
+
+If ElevenLabs credentials are missing, the script falls back to the local macOS `say` voice so the video pipeline still works.
 
 ## Deploy
 

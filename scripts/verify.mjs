@@ -30,6 +30,11 @@ const requiredFiles = [
   "docs/styles.css",
   "docs/manifest.json",
   "docs/src/main.js",
+  "remotion/index.ts",
+  "remotion/Root.tsx",
+  "remotion/RevSprintStudioDemo.tsx",
+  "remotion/narration.txt",
+  "scripts/build-demo-video.mjs",
 ];
 
 for (const file of requiredFiles) {
@@ -37,12 +42,18 @@ for (const file of requiredFiles) {
 }
 
 const packageJson = JSON.parse(await readFile(path.join(rootDir, "package.json"), "utf8"));
-for (const scriptName of ["dev", "test", "build", "verify"]) {
+for (const scriptName of ["dev", "test", "build", "verify", "video:build", "video:preview"]) {
   assert.ok(packageJson.scripts?.[scriptName], `Missing package script: ${scriptName}`);
 }
 
 const readme = await readFile(path.join(rootDir, "README.md"), "utf8");
-for (const expectedSnippet of ["RevSprint Studio", "six-week", "npm run build", "npm run verify"]) {
+for (const expectedSnippet of [
+  "RevSprint Studio",
+  "six-week",
+  "npm run build",
+  "npm run verify",
+  "npm run video:build",
+]) {
   assert.match(readme, new RegExp(expectedSnippet, "i"), `README is missing "${expectedSnippet}"`);
 }
 
@@ -86,6 +97,9 @@ assert.match(builtCss, /--font-body/, "Built CSS is missing design tokens");
 const builtMain = await readFile(path.join(rootDir, "docs", "src", "main.js"), "utf8");
 assert.match(builtMain, /generateButton/, "Built JavaScript is missing interaction wiring");
 assert.match(builtMain, /serviceWorker\.register/, "Built JavaScript is missing service worker registration");
+
+const narration = await readFile(path.join(rootDir, "remotion", "narration.txt"), "utf8");
+assert.ok(narration.trim().split("\n").length >= 8, "Narration script looks too short");
 
 console.log("Verification passed");
 console.log(`- built docs path: ${path.join(rootDir, "docs")}`);
